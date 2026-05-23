@@ -1,0 +1,24 @@
+# Core
+arxiv>=2.1.0
+requests>=2.31.0
+PyYAML>=6.0.1
+python-dotenv>=1.0.0
+click>=8.1.7
+tqdm>=4.66.0
+
+# Vector + embeddings
+chromadb>=0.4.22
+sentence-transformers>=2.3.0
+
+# Graph
+networkx>=3.2
+
+# Retrieval baselines
+rank-bm25>=0.2.2
+
+# LLM providers (install whichever you'll use)
+anthropic>=0.40.0
+openai>=1.12.0
+
+# Testing
+pytest>=7.4.0

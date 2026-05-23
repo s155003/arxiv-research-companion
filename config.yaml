@@ -1,0 +1,46 @@
+# arXiv Research Companion — configuration
+# Override per-environment via env vars or by passing --config to scripts.
+
+embeddings:
+  model: sentence-transformers/all-MiniLM-L6-v2
+  batch_size: 64
+  # If True, normalize embeddings to unit length so cosine == dot product.
+  normalize: true
+
+vector_store:
+  path: ./data/chroma
+  collection: arxiv_chunks
+  # Distance metric. Chroma supports: "cosine", "l2", "ip".
+  distance: cosine
+
+citation_graph:
+  path: ./data/citations.gpickle
+  # Max hops to walk from a vector seed when expanding candidates.
+  max_hops: 2
+  # Polite throttle for Semantic Scholar API (requests per second).
+  semantic_scholar_rps: 1.0
+  # PageRank damping factor.
+  pagerank_alpha: 0.85
+
+retrieval:
+  k_seed: 20       # vector hits used as graph seeds
+  k_expand: 30     # max graph candidates per seed
+  k_final: 10      # papers returned for generation
+  weights:
+    alpha: 0.6     # semantic similarity to query
+    beta:  0.3     # pagerank / influence
+    gamma: 0.2     # proximity to a semantic seed
+    delta: 0.4     # hop-distance penalty for graph-only candidates
+
+generation:
+  provider: anthropic           # anthropic | openai | none
+  model: claude-sonnet-4-6
+  max_tokens: 1024
+  temperature: 0.2
+
+ingest:
+  # Where to cache raw arXiv + Semantic Scholar responses.
+  cache_dir: ./data/cache
+  # When chunking paper text, target size in characters.
+  chunk_size: 1200
+  chunk_overlap: 200
