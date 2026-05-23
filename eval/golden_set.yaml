@@ -1,0 +1,142 @@
+# Golden evaluation set.
+#
+# Each item is a question with a list of expected arXiv papers an expert would
+# consider essential in the top results. Tags let us slice metrics: the
+# headline metric is `foundational_recall@k` because pure-vector RAG
+# systematically misses foundational ancestor papers.
+#
+# Build the index with a corresponding topic query before running eval:
+#   python scripts/build_index.py --query "diffusion models" --max-papers 400
+#
+# Or build several topic-specific indexes and run eval against each.
+
+- question: "What are the foundational papers behind diffusion models for image generation?"
+  topic: diffusion
+  expected:
+    - id: "1503.03585"
+      title: "Deep Unsupervised Learning using Nonequilibrium Thermodynamics"
+      tags: [foundational]
+    - id: "2006.11239"
+      title: "Denoising Diffusion Probabilistic Models"
+      tags: [foundational]
+    - id: "1907.05600"
+      title: "Generative Modeling by Estimating Gradients of the Data Distribution"
+      tags: [foundational]
+    - id: "2011.13456"
+      title: "Score-Based Generative Modeling through Stochastic Differential Equations"
+      tags: [foundational]
+    - id: "2105.05233"
+      title: "Diffusion Models Beat GANs on Image Synthesis"
+      tags: [recent]
+    - id: "2112.10752"
+      title: "High-Resolution Image Synthesis with Latent Diffusion Models"
+      tags: [recent]
+
+- question: "What papers introduced and developed the Transformer architecture?"
+  topic: transformers
+  expected:
+    - id: "1706.03762"
+      title: "Attention Is All You Need"
+      tags: [foundational]
+    - id: "1409.0473"
+      title: "Neural Machine Translation by Jointly Learning to Align and Translate"
+      tags: [foundational]
+    - id: "1810.04805"
+      title: "BERT: Pre-training of Deep Bidirectional Transformers"
+      tags: [foundational, recent]
+    - id: "2005.14165"
+      title: "Language Models are Few-Shot Learners (GPT-3)"
+      tags: [recent]
+
+- question: "What are the seminal papers on reinforcement learning from human feedback?"
+  topic: rlhf
+  expected:
+    - id: "1706.03741"
+      title: "Deep Reinforcement Learning from Human Preferences"
+      tags: [foundational]
+    - id: "2009.01325"
+      title: "Learning to summarize from human feedback"
+      tags: [foundational]
+    - id: "2203.02155"
+      title: "Training language models to follow instructions with human feedback"
+      tags: [recent]
+    - id: "2204.05862"
+      title: "Training a Helpful and Harmless Assistant with RLHF"
+      tags: [recent]
+
+- question: "What are the key papers on chain-of-thought prompting in LLMs?"
+  topic: chain_of_thought
+  expected:
+    - id: "2201.11903"
+      title: "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models"
+      tags: [foundational]
+    - id: "2205.11916"
+      title: "Large Language Models are Zero-Shot Reasoners"
+      tags: [foundational]
+    - id: "2203.11171"
+      title: "Self-Consistency Improves Chain of Thought Reasoning"
+      tags: [recent]
+    - id: "2305.10601"
+      title: "Tree of Thoughts: Deliberate Problem Solving with LLMs"
+      tags: [recent]
+
+- question: "What are the foundational papers on word embeddings and distributed word representations?"
+  topic: word_embeddings
+  expected:
+    - id: "1301.3781"
+      title: "Efficient Estimation of Word Representations in Vector Space (word2vec)"
+      tags: [foundational]
+    - id: "1310.4546"
+      title: "Distributed Representations of Words and Phrases"
+      tags: [foundational]
+    - id: "1607.04606"
+      title: "Enriching Word Vectors with Subword Information (fastText)"
+      tags: [recent]
+    - id: "1802.05365"
+      title: "Deep contextualized word representations (ELMo)"
+      tags: [recent]
+
+- question: "What are the key papers on retrieval-augmented generation for language models?"
+  topic: rag
+  expected:
+    - id: "2005.11401"
+      title: "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks"
+      tags: [foundational]
+    - id: "2002.08909"
+      title: "REALM: Retrieval-Augmented Language Model Pre-Training"
+      tags: [foundational]
+    - id: "2004.04906"
+      title: "Dense Passage Retrieval for Open-Domain Question Answering"
+      tags: [foundational]
+    - id: "2208.03299"
+      title: "Atlas: Few-shot Learning with Retrieval Augmented Language Models"
+      tags: [recent]
+
+- question: "What are the foundational papers on neural architecture search?"
+  topic: nas
+  expected:
+    - id: "1611.01578"
+      title: "Neural Architecture Search with Reinforcement Learning"
+      tags: [foundational]
+    - id: "1802.03268"
+      title: "Efficient Neural Architecture Search via Parameter Sharing"
+      tags: [foundational]
+    - id: "1806.09055"
+      title: "DARTS: Differentiable Architecture Search"
+      tags: [foundational]
+
+- question: "What are the key papers on contrastive learning for visual representations?"
+  topic: contrastive
+  expected:
+    - id: "2002.05709"
+      title: "A Simple Framework for Contrastive Learning of Visual Representations (SimCLR)"
+      tags: [foundational]
+    - id: "1911.05722"
+      title: "Momentum Contrast for Unsupervised Visual Representation Learning (MoCo)"
+      tags: [foundational]
+    - id: "2006.09882"
+      title: "Unsupervised Learning of Visual Features by Contrasting Cluster Assignments (SwAV)"
+      tags: [recent]
+    - id: "2103.00020"
+      title: "Learning Transferable Visual Models From Natural Language Supervision (CLIP)"
+      tags: [recent]
