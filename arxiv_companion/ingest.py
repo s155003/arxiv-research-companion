@@ -77,7 +77,7 @@ def normalize_arxiv_id(raw: str) -> str | None:
 
 def search_arxiv(query: str, max_results: int = 100) -> Iterator[arxiv.Result]:
     """Yield arXiv search results. Uses the official API via the `arxiv` package."""
-    client = arxiv.Client(page_size=50, delay_seconds=3.0, num_retries=3)
+    client = arxiv.Client(page_size=10, delay_seconds=15.0, num_retries=8)
     search = arxiv.Search(
         query=query,
         max_results=max_results,
