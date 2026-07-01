@@ -126,6 +126,7 @@ class SemanticScholarClient:
     def fetch_by_arxiv_id(self, arxiv_id: str) -> dict | None:
         """Return the S2 paper record for an arXiv ID, or None on miss."""
         cache_path = self.cache_dir / f"{arxiv_id}.json"
+        cache_path.parent.mkdir(parents=True, exist_ok=True)
         if cache_path.exists():
             return json.loads(cache_path.read_text())
 
